@@ -1,5 +1,12 @@
 name: CI
 
+# Self-contained CI for Athar-Web.
+#
+# This repo is PUBLIC, so it cannot call the reusable workflow in the private
+# NextStageSY/.github repo. The build/test steps are inlined here instead. The
+# other (still-private) -Web repos keep using the shared reusable workflow; if
+# the shared workflow changes, mirror the change here manually.
+
 on:
   push:
     branches: [main]
@@ -13,5 +20,61 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
-    uses: NextStageSY/.github/.github/workflows/web-ci.yml@main
+  build-test:
+    name: Build, test & docker compose build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve project name
+        id: proj
+        run: |
+          slnx=$(ls *.slnx 2>/dev/null | head -n1)
+          if [ -z "$slnx" ]; then
+            echo "::error::No .slnx solution file found at the repo root."
+            exit 1
+          fi
+          name="${slnx%.slnx}"
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          echo "Resolved project name: $name"
+
+      # ABP references appsettings.secrets.json as a copy-to-output content file,
+      # but it is gitignored. Seed empty placeholders so a clean checkout builds.
+      - name: Seed empty appsettings.secrets.json
+        run: |
+          grep -rl --include='*.csproj' 'appsettings.secrets.json' . | while read -r csproj; do
+            f="$(dirname "$csproj")/appsettings.secrets.json"
+            if [ ! -f "$f" ]; then
+              echo '{}' > "$f"
+              echo "created $f"
+            fi
+          done
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore
+        run: dotnet restore "${{ steps.proj.outputs.name }}.slnx"
+
+      - name: Build
+        run: dotnet build "${{ steps.proj.outputs.name }}.slnx" -c Release --no-restore --nologo
+
+      - name: Test
+        run: dotnet test "${{ steps.proj.outputs.name }}.slnx" -c Release --no-build --nologo
+
+      - name: Publish HttpApi.Host
+        run: dotnet publish "src/${{ steps.proj.outputs.name }}.HttpApi.Host/${{ steps.proj.outputs.name }}.HttpApi.Host.csproj" -c Release --no-build --nologo
+
+      - name: Publish DbMigrator
+        run: dotnet publish "src/${{ steps.proj.outputs.name }}.DbMigrator/${{ steps.proj.outputs.name }}.DbMigrator.csproj" -c Release --no-build --nologo
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # The angular image builds itself (yarn build:prod inside the image), so
+      # this also validates the Angular production build.
+      - name: Build images (docker compose)
+        run: docker compose -f "etc/docker-compose/docker-compose.ci.yml" build
