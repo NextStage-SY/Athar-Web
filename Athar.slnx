@@ -1,0 +1,23 @@
+<Solution>
+    <Configurations>
+        <Platform Name="Any CPU" />
+    </Configurations>
+    <Folder Name="/src/">
+        <Project Path="src/Athar.Domain/Athar.Domain.csproj" />
+        <Project Path="src/Athar.Application/Athar.Application.csproj" />
+        <Project Path="src/Athar.EntityFrameworkCore/Athar.EntityFrameworkCore.csproj" />
+        <Project Path="src/Athar.Domain.Shared/Athar.Domain.Shared.csproj" />
+        <Project Path="src/Athar.Application.Contracts/Athar.Application.Contracts.csproj" />
+        <Project Path="src/Athar.HttpApi/Athar.HttpApi.csproj" />
+        <Project Path="src/Athar.HttpApi.Client/Athar.HttpApi.Client.csproj" />
+        <Project Path="src/Athar.HttpApi.Host/Athar.HttpApi.Host.csproj" />
+        <Project Path="src/Athar.DbMigrator/Athar.DbMigrator.csproj" />
+    </Folder>
+    <Folder Name="/test/">
+        <Project Path="test/Athar.Application.Tests/Athar.Application.Tests.csproj" />
+        <Project Path="test/Athar.EntityFrameworkCore.Tests/Athar.EntityFrameworkCore.Tests.csproj" />
+        <Project Path="test/Athar.TestBase/Athar.TestBase.csproj" />
+        <Project Path="test/Athar.Domain.Tests/Athar.Domain.Tests.csproj" />
+        <Project Path="test/Athar.HttpApi.Client.ConsoleTestApp/Athar.HttpApi.Client.ConsoleTestApp.csproj" />
+    </Folder>
+</Solution>

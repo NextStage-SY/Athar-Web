@@ -1,0 +1,114 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXLiteTheme": {
+      "version": "5.5.0",
+      "isInstalled": true,
+      "creationTime": "07/17/2026 13:16:11 +00:00"
+    },
+    "Volo.Abp.Account": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/17/2026 13:16:11 +00:00"
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/17/2026 13:16:11 +00:00"
+    },
+    "Volo.Abp.Identity": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/17/2026 13:16:11 +00:00"
+    },
+    "Volo.Abp.TenantManagement": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/17/2026 13:16:11 +00:00"
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/17/2026 13:16:11 +00:00"
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/17/2026 13:16:11 +00:00"
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/17/2026 13:16:11 +00:00"
+    },
+    "Volo.Abp.BlobStoring.Database": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/17/2026 13:16:11 +00:00"
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "Athar.Application": {
+      "path": "src/Athar.Application/Athar.Application.abppkg",
+      "folder": "src"
+    },
+    "Athar.Application.Tests": {
+      "path": "test/Athar.Application.Tests/Athar.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "Athar.Domain.Shared": {
+      "path": "src/Athar.Domain.Shared/Athar.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "Athar.Application.Contracts": {
+      "path": "src/Athar.Application.Contracts/Athar.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "Athar.HttpApi": {
+      "path": "src/Athar.HttpApi/Athar.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "Athar.HttpApi.Client": {
+      "path": "src/Athar.HttpApi.Client/Athar.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "Athar.EntityFrameworkCore.Tests": {
+      "path": "test/Athar.EntityFrameworkCore.Tests/Athar.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "Athar.EntityFrameworkCore": {
+      "path": "src/Athar.EntityFrameworkCore/Athar.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "Athar.TestBase": {
+      "path": "test/Athar.TestBase/Athar.TestBase.abppkg",
+      "folder": "test"
+    },
+    "Athar.Domain.Tests": {
+      "path": "test/Athar.Domain.Tests/Athar.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "Athar.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/Athar.HttpApi.Client.ConsoleTestApp/Athar.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "Athar.DbMigrator": {
+      "path": "src/Athar.DbMigrator/Athar.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "Athar.HttpApi.Host": {
+      "path": "src/Athar.HttpApi.Host/Athar.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "Athar.Domain": {
+      "path": "src/Athar.Domain/Athar.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}
