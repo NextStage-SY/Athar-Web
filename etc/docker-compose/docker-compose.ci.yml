@@ -1,0 +1,34 @@
+# CI build-only compose for the Athar web app.
+#
+# Builds the three deployable images from the ABP-generated Dockerfiles.
+# The two .NET images (api, db-migrator) follow ABP's publish-then-package
+# convention: run `dotnet publish -c Release` for each project FIRST, then this
+# compose file packages the published output. The angular image is
+# self-contained (it runs `yarn build:prod` inside its own build stage).
+#
+# Paths are relative to this file's directory (etc/docker-compose), so the
+# repo root is two levels up.
+#
+# Usage (from repo root):
+#   dotnet publish src/Athar.HttpApi.Host/Athar.HttpApi.Host.csproj -c Release
+#   dotnet publish src/Athar.DbMigrator/Athar.DbMigrator.csproj -c Release
+#   docker compose -f etc/docker-compose/docker-compose.ci.yml build
+
+services:
+  api:
+    image: nextstagesy/athar-api:ci
+    build:
+      context: ../../src/Athar.HttpApi.Host
+      dockerfile: Dockerfile
+
+  db-migrator:
+    image: nextstagesy/athar-db-migrator:ci
+    build:
+      context: ../../src/Athar.DbMigrator
+      dockerfile: Dockerfile
+
+  angular:
+    image: nextstagesy/athar-angular:ci
+    build:
+      context: ../../angular
+      dockerfile: Dockerfile
