@@ -1,6 +1,6 @@
 name: CI
 
-# Self-contained CI for a NextStageSY ABP web app.
+# Self-contained CI for a NextStage-SY ABP web app.
 #
 # The build/test + docker compose build steps are inlined here (rather than
 # calling a shared reusable workflow), so this repo has no cross-repo dependency
