@@ -281,3 +281,5 @@ src/Athar.Blazor.Server.Tiered/Logs/*
 # IdentityServer temp files
 tempkey.rsa
 tempkey.jwk
+# Local secrets (never commit real credentials here — use dotnet user-secrets)
+appsettings.secrets.json
