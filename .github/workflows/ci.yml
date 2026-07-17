@@ -1,11 +1,11 @@
 name: CI
 
-# Self-contained CI for Athar-Web.
+# Self-contained CI for a NextStageSY ABP web app.
 #
-# This repo is PUBLIC, so it cannot call the reusable workflow in the private
-# NextStageSY/.github repo. The build/test steps are inlined here instead. The
-# other (still-private) -Web repos keep using the shared reusable workflow; if
-# the shared workflow changes, mirror the change here manually.
+# The build/test + docker compose build steps are inlined here (rather than
+# calling a shared reusable workflow), so this repo has no cross-repo dependency
+# and works whether it is public or private. All five -Web repos carry an
+# identical copy of this file; if you change one, mirror it to the others.
 
 on:
   push:
