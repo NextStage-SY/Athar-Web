@@ -1,0 +1,12 @@
+# Default owner for anything not matched below
+*            @NextStage-SY/leads
+
+# Backend (.NET / ABP layers)
+/src/        @NextStage-SY/backend
+/test/       @NextStage-SY/backend
+
+# Frontend (Angular)
+/angular/    @NextStage-SY/frontend
+
+# CI / workflows
+/.github/    @NextStage-SY/devops
