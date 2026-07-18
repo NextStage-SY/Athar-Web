@@ -1,11 +1,15 @@
 name: CI
 
-# Self-contained CI for a NextStage-SY ABP web app.
+# Self-contained CI for Athar-Web.
 #
-# The build/test + docker compose build steps are inlined here (rather than
-# calling a shared reusable workflow), so this repo has no cross-repo dependency
-# and works whether it is public or private. All five -Web repos carry an
-# identical copy of this file; if you change one, mirror it to the others.
+# Every other -Web repo is a thin caller into the shared reusable workflow at
+# NextStage-SY/.github-private (.github/workflows/web-ci.yml). This repo is
+# PUBLIC, and GitHub forbids a public repo from calling a reusable workflow
+# stored in a private one — so it keeps its own inlined copy of the same steps.
+#
+# Consequence: this is the one CI file that must be mirrored by hand. When
+# web-ci.yml changes in .github-private, update these steps to match.
+# (If Athar-Web ever goes private, convert it to a thin caller too.)
 
 on:
   push:
