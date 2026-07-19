@@ -283,3 +283,12 @@ tempkey.rsa
 tempkey.jwk
 # Local secrets (never commit real credentials here — use dotnet user-secrets)
 appsettings.secrets.json
+
+# AI assistant configuration — deliberately absent from this repo.
+# Athar-Web is the org's only public -Web repo and carries no agent config by
+# decision (see Athar-Docs technical/local-development.md). ABP Studio's
+# ai-config schematic regenerates .cursor/rules; ignore it so a regeneration
+# does not silently re-commit what was removed.
+.claude/
+.cursor/
+AGENTS.md
