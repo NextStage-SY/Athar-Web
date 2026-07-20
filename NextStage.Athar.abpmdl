@@ -1,0 +1,114 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXLiteTheme": {
+      "version": "5.5.0",
+      "isInstalled": true,
+      "creationTime": "07/20/2026 11:54:11 +00:00"
+    },
+    "Volo.Abp.Account": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/20/2026 11:54:11 +00:00"
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/20/2026 11:54:11 +00:00"
+    },
+    "Volo.Abp.Identity": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/20/2026 11:54:11 +00:00"
+    },
+    "Volo.Abp.TenantManagement": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/20/2026 11:54:11 +00:00"
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/20/2026 11:54:11 +00:00"
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/20/2026 11:54:11 +00:00"
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/20/2026 11:54:11 +00:00"
+    },
+    "Volo.Abp.BlobStoring.Database": {
+      "version": "10.5.0",
+      "isInstalled": true,
+      "creationTime": "07/20/2026 11:54:11 +00:00"
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "NextStage.Athar.Application": {
+      "path": "src/NextStage.Athar.Application/NextStage.Athar.Application.abppkg",
+      "folder": "src"
+    },
+    "NextStage.Athar.Application.Tests": {
+      "path": "test/NextStage.Athar.Application.Tests/NextStage.Athar.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "NextStage.Athar.Domain.Shared": {
+      "path": "src/NextStage.Athar.Domain.Shared/NextStage.Athar.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "NextStage.Athar.Application.Contracts": {
+      "path": "src/NextStage.Athar.Application.Contracts/NextStage.Athar.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "NextStage.Athar.HttpApi": {
+      "path": "src/NextStage.Athar.HttpApi/NextStage.Athar.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "NextStage.Athar.HttpApi.Client": {
+      "path": "src/NextStage.Athar.HttpApi.Client/NextStage.Athar.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "NextStage.Athar.EntityFrameworkCore.Tests": {
+      "path": "test/NextStage.Athar.EntityFrameworkCore.Tests/NextStage.Athar.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "NextStage.Athar.EntityFrameworkCore": {
+      "path": "src/NextStage.Athar.EntityFrameworkCore/NextStage.Athar.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "NextStage.Athar.TestBase": {
+      "path": "test/NextStage.Athar.TestBase/NextStage.Athar.TestBase.abppkg",
+      "folder": "test"
+    },
+    "NextStage.Athar.Domain.Tests": {
+      "path": "test/NextStage.Athar.Domain.Tests/NextStage.Athar.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "NextStage.Athar.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/NextStage.Athar.HttpApi.Client.ConsoleTestApp/NextStage.Athar.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "NextStage.Athar.DbMigrator": {
+      "path": "src/NextStage.Athar.DbMigrator/NextStage.Athar.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "NextStage.Athar.HttpApi.Host": {
+      "path": "src/NextStage.Athar.HttpApi.Host/NextStage.Athar.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "NextStage.Athar.Domain": {
+      "path": "src/NextStage.Athar.Domain/NextStage.Athar.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}

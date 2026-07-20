@@ -1,0 +1,23 @@
+<Solution>
+    <Configurations>
+        <Platform Name="Any CPU" />
+    </Configurations>
+    <Folder Name="/src/">
+        <Project Path="src/NextStage.Athar.Domain/NextStage.Athar.Domain.csproj" />
+        <Project Path="src/NextStage.Athar.Application/NextStage.Athar.Application.csproj" />
+        <Project Path="src/NextStage.Athar.EntityFrameworkCore/NextStage.Athar.EntityFrameworkCore.csproj" />
+        <Project Path="src/NextStage.Athar.Domain.Shared/NextStage.Athar.Domain.Shared.csproj" />
+        <Project Path="src/NextStage.Athar.Application.Contracts/NextStage.Athar.Application.Contracts.csproj" />
+        <Project Path="src/NextStage.Athar.HttpApi/NextStage.Athar.HttpApi.csproj" />
+        <Project Path="src/NextStage.Athar.HttpApi.Client/NextStage.Athar.HttpApi.Client.csproj" />
+        <Project Path="src/NextStage.Athar.HttpApi.Host/NextStage.Athar.HttpApi.Host.csproj" />
+        <Project Path="src/NextStage.Athar.DbMigrator/NextStage.Athar.DbMigrator.csproj" />
+    </Folder>
+    <Folder Name="/test/">
+        <Project Path="test/NextStage.Athar.Application.Tests/NextStage.Athar.Application.Tests.csproj" />
+        <Project Path="test/NextStage.Athar.EntityFrameworkCore.Tests/NextStage.Athar.EntityFrameworkCore.Tests.csproj" />
+        <Project Path="test/NextStage.Athar.TestBase/NextStage.Athar.TestBase.csproj" />
+        <Project Path="test/NextStage.Athar.Domain.Tests/NextStage.Athar.Domain.Tests.csproj" />
+        <Project Path="test/NextStage.Athar.HttpApi.Client.ConsoleTestApp/NextStage.Athar.HttpApi.Client.ConsoleTestApp.csproj" />
+    </Folder>
+</Solution>
