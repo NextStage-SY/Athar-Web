@@ -3,7 +3,7 @@ import { Environment } from '@abp/ng.core';
 const baseUrl = 'http://localhost:4200';
 
 const oAuthConfig = {
-  issuer: 'https://localhost:44340/',
+  issuer: 'https://localhost:44370/',
   redirectUri: baseUrl,
   clientId: 'Athar_App',
   responseType: 'code',
@@ -20,8 +20,8 @@ export const environment = {
   oAuthConfig,
   apis: {
     default: {
-      url: 'https://localhost:44340',
-      rootNamespace: 'Athar',
+      url: 'https://localhost:44370',
+      rootNamespace: 'NextStage.Athar',
     },
     AbpAccountPublic: {
       url: oAuthConfig.issuer,

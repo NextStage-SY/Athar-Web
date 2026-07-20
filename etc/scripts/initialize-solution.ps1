@@ -25,7 +25,7 @@ $jobs += Start-Job -Name "InstallLibs" -ScriptBlock {
 
 $jobs += Start-Job -Name "DbMigrator" -ScriptBlock {
     $ErrorActionPreference = "Stop"
-    Set-Location (Join-Path $using:scriptRoot "../../src/Athar.DbMigrator")
+    Set-Location (Join-Path $using:scriptRoot "../../src/NextStage.Athar.DbMigrator")
     dotnet run
     dotnet run
 
@@ -36,8 +36,8 @@ $jobs += Start-Job -Name "DbMigrator" -ScriptBlock {
 
 $jobs += Start-Job -Name "DevCert" -ScriptBlock {
     $ErrorActionPreference = "Stop"
-    Set-Location (Join-Path $using:scriptRoot "../../src/Athar.HttpApi.Host")
-    dotnet dev-certs https -v -ep openiddict.pfx -p 2e8c3704-b064-4cbf-90e1-b9562a39ef3f
+    Set-Location (Join-Path $using:scriptRoot "../../src/NextStage.Athar.HttpApi.Host")
+    dotnet dev-certs https -v -ep openiddict.pfx -p 5b5d0973-7423-4d5d-bac8-e9dd5f137fd5
 
     if ($LASTEXITCODE -ne 0) {
         throw "dotnet dev-certs exited with code $LASTEXITCODE"

@@ -10,21 +10,21 @@
 # repo root is two levels up.
 #
 # Usage (from repo root):
-#   dotnet publish src/Athar.HttpApi.Host/Athar.HttpApi.Host.csproj -c Release
-#   dotnet publish src/Athar.DbMigrator/Athar.DbMigrator.csproj -c Release
+#   dotnet publish src/NextStage.Athar.HttpApi.Host/NextStage.Athar.HttpApi.Host.csproj -c Release
+#   dotnet publish src/NextStage.Athar.DbMigrator/NextStage.Athar.DbMigrator.csproj -c Release
 #   docker compose -f etc/docker-compose/docker-compose.ci.yml build
 
 services:
   api:
     image: nextstagesy/athar-api:ci
     build:
-      context: ../../src/Athar.HttpApi.Host
+      context: ../../src/NextStage.Athar.HttpApi.Host
       dockerfile: Dockerfile
 
   db-migrator:
     image: nextstagesy/athar-db-migrator:ci
     build:
-      context: ../../src/Athar.DbMigrator
+      context: ../../src/NextStage.Athar.DbMigrator
       dockerfile: Dockerfile
 
   angular:

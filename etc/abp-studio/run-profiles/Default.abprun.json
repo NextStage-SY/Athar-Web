@@ -1,9 +1,9 @@
 {
   "applications": {
-    "Athar.HttpApi.Host": {
+    "NextStage.Athar.HttpApi.Host": {
       "type": "dotnet-project",
-      "launchUrl": "https://localhost:44340",
-      "path": "../../../src/Athar.HttpApi.Host/Athar.HttpApi.Host.csproj",
+      "launchUrl": "https://localhost:44370",
+      "path": "../../../src/NextStage.Athar.HttpApi.Host/NextStage.Athar.HttpApi.Host.csproj",
       "kubernetesService": ".*-httpapihost$",
       "healthCheckEndpoint": "/health-status",
       "healthUiEndpoint": "/health-ui",
@@ -11,7 +11,7 @@
         "order": 4
       }
     },
-    "Athar.Angular": {
+    "NextStage.Athar.Angular": {
       "type": "cli",
       "workingDirectory": "../../../angular",
       "startCommand": "./start.ps1",
@@ -98,7 +98,7 @@
           "FolderTargets": [],
           "ApplicationTargets": [],
           "ContainerTargets": [],
-          "ProxyUrl": "https://localhost:44340",
+          "ProxyUrl": "https://localhost:44370",
           "ProxyModule": "app",
           "ProxyServiceType": "application",
           "ProxyWorkingDirectory": "../../../angular"

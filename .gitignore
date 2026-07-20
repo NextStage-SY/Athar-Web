@@ -263,17 +263,17 @@ paket-files/
 !.vscode/extensions.json
 *.code-workspace
 
-# Athar
-src/Athar.Web/Logs/*
-src/Athar.Web.Host/Logs/*
-src/Athar.Web.Public/Logs/*
-src/Athar.Web.Public.Host/Logs/*
-src/Athar.AuthServer/Logs/*
-src/Athar.HttpApi.Host/Logs/*
-src/Athar.HttpApi.Host/Logs/*
-src/Athar.DbMigrator/Logs/*
-src/Athar.Blazor.Server/Logs/*
-src/Athar.Blazor.Server.Tiered/Logs/*
+# NextStage.Athar
+src/NextStage.Athar.Web/Logs/*
+src/NextStage.Athar.Web.Host/Logs/*
+src/NextStage.Athar.Web.Public/Logs/*
+src/NextStage.Athar.Web.Public.Host/Logs/*
+src/NextStage.Athar.AuthServer/Logs/*
+src/NextStage.Athar.HttpApi.Host/Logs/*
+src/NextStage.Athar.HttpApi.Host/Logs/*
+src/NextStage.Athar.DbMigrator/Logs/*
+src/NextStage.Athar.Blazor.Server/Logs/*
+src/NextStage.Athar.Blazor.Server.Tiered/Logs/*
 
 # Use abp install-libs to restore.
 **/wwwroot/libs/*
