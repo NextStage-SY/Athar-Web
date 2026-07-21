@@ -292,3 +292,6 @@ appsettings.secrets.json
 .claude/
 .cursor/
 AGENTS.md
+
+# Obsidian vault config — local editor state, not project content.
+.obsidian/
