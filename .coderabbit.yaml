@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+# CodeRabbit config for Athar-Web (public ABP 10.5 / .NET 10 + Angular 21 solution).
+# Docs: https://docs.coderabbit.ai/reference/yaml-template
+language: en-US
+
+reviews:
+  # "chill" keeps the noise down; switch to "assertive" for a stricter pass.
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - main
+
+  # Skip generated / non-source files so reviews stay focused on hand-written code.
+  path_filters:
+    - "!**/Migrations/**"          # EF Core generated migrations
+    - "!angular/src/app/proxy/**"  # ABP-generated Angular API proxies (regenerate, don't hand-edit)
+    - "!**/node_modules/**"
+    - "!**/dist/**"
+    - "!**/*.min.js"
+    - "!**/*.slnx"
+    - "!**/*.abpmdl"
+    - "!**/*.abpsln"
+    - "!yarn.lock"
+
+  # Area-specific review guidance that mirrors the org's ABP layer rules.
+  path_instructions:
+    - path: "src/**/*.cs"
+      instructions: >-
+        This is an ABP Framework layered/DDD solution (namespaces prefixed
+        NextStage.Athar.). Enforce: higher layers depend on lower, never the
+        reverse; the Application layer must go through IRepository / repository
+        interfaces and must NEVER touch a DbContext directly (DbContext belongs
+        only in the EntityFrameworkCore project); controllers and app services
+        depend on interfaces, not concrete implementations; domain entities must
+        never be exposed on or returned as DTOs. Object mapping uses Mapperly
+        (registered as a singleton), not AutoMapper. Flag any violation of these.
+    - path: "test/**/*.cs"
+      instructions: >-
+        Tests are xUnit + Shouldly against *ApplicationTestBase using in-memory
+        SQLite. Prefer behavior-focused assertions; flag tests that hit a real
+        database or depend on execution order.
+    - path: "angular/**/*.ts"
+      instructions: >-
+        Angular 21 with standalone components; yarn is the package manager.
+        API proxies under src/app/proxy/ are generated via
+        `abp generate-proxy -t ng` — do not hand-edit them. Flag direct DOM
+        access and untyped HTTP calls where a generated proxy service exists.
+
+  tools:
+    gitleaks:
+      enabled: true
+
+chat:
+  auto_reply: true
