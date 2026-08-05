@@ -34,6 +34,10 @@ using Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite.Bundling;
 using Microsoft.AspNetCore.Hosting;
 using Volo.Abp.AspNetCore.Serilog;
+using Serilog;
+using Volo.Abp.BlobStoring;
+using Volo.Abp.BlobStoring.Database;
+using Volo.Abp.BlobStoring.Minio;
 using Volo.Abp.Identity;
 using Volo.Abp.OpenIddict;
 using Volo.Abp.Swashbuckle;
@@ -52,7 +56,8 @@ namespace NextStage.Athar;
     typeof(AtharEntityFrameworkCoreModule),
     typeof(AbpAccountWebOpenIddictModule),
     typeof(AbpSwashbuckleModule),
-    typeof(AbpAspNetCoreSerilogModule)
+    typeof(AbpAspNetCoreSerilogModule),
+    typeof(AbpBlobStoringMinioModule)
     )]
 public class AtharHttpApiHostModule : AbpModule
 {
@@ -127,6 +132,60 @@ public class AtharHttpApiHostModule : AbpModule
         ConfigureSwagger(context, configuration);
         ConfigureVirtualFileSystem(context);
         ConfigureCors(context, configuration);
+        ConfigureBlobStoring(configuration);
+    }
+
+    // Picks the BLOB provider for the default container, overriding the one
+    // BlobStoringDatabaseDomainModule sets (it only assigns UseDatabase() while
+    // ProviderType is null, and this action is registered after it, so whichever
+    // provider is chosen here wins). Both providers are always available: the
+    // AbpBlobs tables ship with the template and AtharDbContext.ConfigureBlobStoring()
+    // maps them, so falling back costs no migration.
+    private void ConfigureBlobStoring(IConfiguration configuration)
+    {
+        var endPoint = configuration["Minio:EndPoint"];
+        var accessKey = configuration["Minio:AccessKey"];
+        var secretKey = configuration["Minio:SecretKey"];
+
+        // A fresh clone has no appsettings.secrets.json, so the keys are absent even
+        // though appsettings.json carries an EndPoint. Fall back rather than fail —
+        // but say so, because silently storing blobs in Postgres is not what a
+        // deployed environment wants.
+        if (string.IsNullOrWhiteSpace(endPoint) ||
+            string.IsNullOrWhiteSpace(accessKey) ||
+            string.IsNullOrWhiteSpace(secretKey))
+        {
+            Log.Warning(
+                "BLOB storing: Minio:EndPoint/AccessKey/SecretKey are not all set — " +
+                "falling back to the database provider. Configure MinIO before deploying.");
+
+            Configure<AbpBlobStoringOptions>(options =>
+            {
+                options.Containers.ConfigureDefault(container => container.UseDatabase());
+            });
+
+            return;
+        }
+
+        Log.Information("BLOB storing: using MinIO at {EndPoint}.", endPoint);
+
+        Configure<AbpBlobStoringOptions>(options =>
+        {
+            options.Containers.ConfigureDefault(container =>
+            {
+                container.UseMinio(minio =>
+                {
+                    // EndPoint is host:port with no scheme — WithSSL decides http vs https.
+                    minio.EndPoint = endPoint;
+                    minio.AccessKey = accessKey;
+                    minio.SecretKey = secretKey;
+                    minio.BucketName = configuration["Minio:BucketName"];
+                    minio.WithSSL = configuration.GetValue<bool>("Minio:WithSSL");
+                    minio.CreateBucketIfNotExists = configuration.GetValue<bool>("Minio:CreateBucketIfNotExists");
+                    minio.PresignedGetExpirySeconds = configuration.GetValue("Minio:PresignedGetExpirySeconds", 3600);
+                });
+            });
+        });
     }
 
     private void ConfigureStudio(IHostEnvironment hostingEnvironment)
